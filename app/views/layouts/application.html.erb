@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "RANGERControl" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <style>
+      .valign-middle {
+          display: table;
+      }
+      
+      .valign-middle .columns {
+          display: table-cell;
+          vertical-align: middle;
+      }
+      
+      .valign-middle .columns,
+      .valign-middle [class*="column"] + [class*="column"]:last-child {
+          float: none;
+      }
+      /* navbar color */
+      .top-bar, .top-bar ul {
+      background-color: #4169e1;
+      }
+      /* link color */
+      a {
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    
+    <div class="title-bar" data-responsive-toggle="top-bar-main" data-hide-for="medium">
+      <button class="menu-icon" type="button" data-toggle="top-bar-main"></button>
+      <div class="title-bar-title">Menu</div>
+    </div>
+
+    
+    <div class="top-bar" id="top-bar-main">
+      <div class="top-bar-left">
+        <ul class="menu vertical medium-horizontal menu" data-dropdown-menu>
+          <li class="menu-text"style="font-weight:normal;">RANGER<strong>Control</strong></li>
+          <!-- All -->
+          <li><a href="/profile">Home</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">News/Events</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">About</a></li>
+          <!-- Students -->
+          
+          <!-- Admins -->
+          
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu vertical medium-horizontal menu">
+          <!-- If Logged In-->
+          <!-- 'Name' -->
+          <li><a href="#">Log Out</a></li>
+          <li><a href="#">Profile</a></li>
+          <!-- If Not Logged In-->
+          <li><a href="#">Log In</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <br>
+    <%= yield %>
+  </body>
+</html>

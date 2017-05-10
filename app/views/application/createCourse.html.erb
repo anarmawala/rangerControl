@@ -1,0 +1,45 @@
+<div class="row">
+  <form action="/courses/new" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <h2>New Course</h2>
+    <div>
+      <div class="medium-12 columns">
+        <label>Course Name
+          <input name="courseName" type="text">
+        </label>
+      </div>
+      <div class="medium-12 columns">
+        <label>Course ID
+          <input name="courseID" type="text">
+        </label>
+      </div>
+      <div class="medium-12 columns">
+        <label>Course Level
+          <select name="courseType">
+            <option value="AP">Advanced Placement</option>
+            <option value="DC">Dual Credit</option>
+            <option value="H">Honors</option>
+            <option value="R">Regulars</option>
+            <option value="ESL">ESL</option>
+          </select>
+        </label>
+      </div>
+      
+      <div class="medium-12 columns">
+        <label>Teacher Name
+          <select name="courseTID">
+            <% Teacher.all.each do |teacher| %>
+              <option value="<%= teacher.TID %>">
+                <%= teacher.TName %>
+              </option>
+            <% end %>
+          </select>
+        </label>
+      </div>
+    </div>
+    
+    <div class="input-group-button">
+      <input type="submit" class="button" value="Submit">
+    </div>
+  </form>
+</div>

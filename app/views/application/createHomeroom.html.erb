@@ -1,0 +1,40 @@
+<div class="row">
+  <form action="/homerooms/new" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <h2>New Homeroom</h2>
+    <div>
+      <div class="medium-12 columns">
+        <label>Homeroom Number
+          <input type="number" name="homeroomNumber" placeholder="123">
+        </label>
+      </div>
+      <div class="medium-12 columns">
+        <label>Homeroom ID
+          <input type="number" name="homeroomID" placeholder="12345678">
+        </label>
+      </div>
+      <div class="column small-12">
+        <label>Homeroom Grade
+          <select name="homeroomGrade">
+              <option value="12">12</option>
+              <option value="11">11</option>
+              <option value="10">10</option>
+              <option value="9">9</option>
+          </select>
+        </label>
+      </div>
+      <div class="column small-12">
+        <label>Homeroom Teacher
+          <select name="homeroomTID">
+            <% Teacher.order(:TName).all.each do |teacher|%>
+              <option value="<%= teacher.TID %>"><%= teacher.TName %></option>
+            <% end %>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div class="input-group-button">
+      <input type="submit" class="button" value="Submit">
+    </div>
+  </form>
+</div>
