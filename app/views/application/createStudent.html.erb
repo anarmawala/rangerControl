@@ -37,7 +37,11 @@
         </div>
         <div class="medium-6 columns">
           <label>Homeroom
-            <% #REMEMBER TO CHANGE to select %>
+            <select name="studentHID">
+              <% Homeroom.order(:HNumber).all.each do |homeroom| %>
+                <option value="<%= homeroom.HID %>"><%= homeroom.HNumber %>, <%= Teacher.find_by(:TID => homeroom.TID).TName %></option>
+              <% end %>
+            </select>
           </label>
         </div>
         <div class="medium-6 columns">
