@@ -24,8 +24,9 @@ class CoursesController < ApplicationController
     
   end
   
-  def editform
-    
+  def editForm
+    @course = Course.find_by(:CID => params[:id])
+    render 'editCourse'
   end
   
   def edit

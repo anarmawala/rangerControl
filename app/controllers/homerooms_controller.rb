@@ -25,8 +25,9 @@ class HomeroomsController < ApplicationController
     
   end
   
-  def editform
-    
+  def editForm
+    @homeroom = Homeroom.find_by(:HID => params[:id])
+    render 'editHomeroom'
   end
   
   def edit

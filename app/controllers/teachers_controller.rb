@@ -24,12 +24,21 @@ class TeachersController < ApplicationController
     Teacher.find_by(:TID => params[:id])
   end
   
-  def editform
-    
+  def editForm
+    @teacher = Teacher.find_by(:TID => params[:id])
+    render 'editTeacher'
   end
   
   def edit
+    editTeacher = Teacher.find_by(:TID => params[:teacherID])
+    puts editTeacher
     
+    editTeacher.TEmail = params[:teacherEmail]
+    editTeacher.TName = params[:teacherName]
+    editTeacher.TAdmin = params[:teacherAdmin]
+    
+    editTeacher.save
+    redirect_to '/home2'
   end
   
   def delete

@@ -30,14 +30,12 @@ class StudentsController < ApplicationController
      
     classesArray = []
     for number in 1..10 do 
-      unless params[eval(":period#{number}Average") == ""]
-        classesArray.push({
-          "SP#{number}CID" => params[eval(":period#{number}CourseID")],
-          "SP#{number}TID" => Course.find_by(:CID => params[eval(":period#{number}CourseID")]).TID,
-          "SP#{number}Average" => params[eval(":period#{number}Average")],
-          "SP#{number}Grade" => params[eval(":period#{number}Grade")],
-        })
-      end
+      classesArray.push({
+        "SP#{number}CID" => params[eval(":period#{number}CourseID")],
+        "SP#{number}TID" => Course.find_by(:CID => params[eval(":period#{number}CourseID")]).TID,
+        "SP#{number}Average" => params[eval(":period#{number}Average")],
+        "SP#{number}Grade" => params[eval(":period#{number}Grade")],
+      })
     end
     
     newStudent.SClasses = classesArray
@@ -53,12 +51,47 @@ class StudentsController < ApplicationController
     
   end
   
-  def editform
-    
+  def editForm
+    @student = Student.find_by(:SID => params[:id])
+    render 'editStudent'
   end
   
   def edit
+    editStudent = Student.find_by(:SID => params[:studentID])
+    editStudent.SID = params[:studentID]
+    editStudent.SName = params[:studentName]
+    editStudent.SAddress = params[:studentAddress]
+    editStudent.SPhone = params[:studentPhone]
+    editStudent.SEmail = params[:studentEmail]
+    editStudent.SAbsences = params[:studentAbsences]
+    editStudent.SAttendance = params[:studentAttendance]
+    editStudent.STardies = params[:studentTardies]
+    editStudent.SDetentions = params[:studentDetentions]
+    editStudent.SUGPA = params[:studentUGPA]
+    editStudent.SWGPA = params[:studentWGPA]
+    editStudent.SSLHs = params[:studentSLHs]
+    editStudent.SCredits = params[:studentCredit]
+    editStudent.SOT = params[:studentOnTrack].to_i
+    editStudent.SGrade = Homeroom.find_by(:HID => params[:studentHID]).HGrade
+    editStudent.SDebt = params[:studentDebt]
+    editStudent.HID = params[:studentHID]
     
+    #Classes
+     
+    editClassesArray = []
+    for number in 1..10 do 
+      editClassesArray.push({
+        "SP#{number}CID" => params[eval(":period#{number}CourseID")],
+        "SP#{number}TID" => Course.find_by(:CID => params[eval(":period#{number}CourseID")]).TID,
+        "SP#{number}Average" => params[eval(":period#{number}Average")],
+        "SP#{number}Grade" => params[eval(":period#{number}Grade")],
+      })
+    end
+    
+    editStudent.SClasses = editClassesArray
+    editStudent.save
+    
+    redirect_to '/home2'
   end
   
   def delete

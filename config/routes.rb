@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   #STUDENT_____________________________________________________________________________
   
   #Create
-  get '/students/new', {:controller => 'students', :action => 'newform'}
+  get '/students/new', {:controller => 'students', :action => 'newForm'}
   post '/students/new', {:controller => 'students', :action => 'add'}
   
   #Read
@@ -23,16 +23,16 @@ Rails.application.routes.draw do
   get '/students/:id', {:controller => 'students', :action => 'show'}
   
   #Update
-  get '/student/edit/:id', {:controller => 'students', :action => 'editform'}
-  post '/student/edit/', {:controller => 'students', :action => 'edit'}
+  get '/students/edit/:id', {:controller => 'students', :action => 'editForm'}
+  post '/students/edit/', {:controller => 'students', :action => 'edit'}
     
   #Delete
-  get '/student/delete/:id', {:controller => 'students', :action => 'delete'}
+  get '/students/delete/:id', {:controller => 'students', :action => 'delete'}
   
   #TEACHER_____________________________________________________________________________
   
    #Create
-  get '/teachers/new', {:controller => 'teachers', :action => 'newform'}
+  get '/teachers/new', {:controller => 'teachers', :action => 'newForm'}
   post '/teachers/new', {:controller => 'teachers', :action => 'add'}
   
   #Read
@@ -40,16 +40,16 @@ Rails.application.routes.draw do
   get '/teachers/:id', {:controller => 'teachers', :action => 'show'}
   
   #Update
-  get '/teacher/edit/:id', {:controller => 'teachers', :action => 'editform'}
-  post '/teacher/edit/', {:controller => 'teachers', :action => 'edit'}
+  get '/teachers/edit/:id', {:controller => 'teachers', :action => 'editForm'}
+  post '/teachers/edit/', {:controller => 'teachers', :action => 'edit'}
     
   #Delete
-  get '/teacher/delete/:id', {:controller => 'teachers', :action => 'delete'}
+  get '/teachers/delete/:id', {:controller => 'teachers', :action => 'delete'}
 
  #COURSES_____________________________________________________________________________
   
    #Create
-  get '/courses/new', {:controller => 'courses', :action => 'newform'}
+  get '/courses/new', {:controller => 'courses', :action => 'newForm'}
   post '/courses/new', {:controller => 'courses', :action => 'add'}
   
   #Read
@@ -57,8 +57,8 @@ Rails.application.routes.draw do
   get '/courses/:id', {:controller => 'courses', :action => 'show'}
   
   #Update
-  get '/course/edit/:id', {:controller => 'courses', :action => 'editform'}
-  post '/course/edit/', {:controller => 'courses', :action => 'edit'}
+  get '/courses/edit/:id', {:controller => 'courses', :action => 'editForm'}
+  post '/courses/edit/', {:controller => 'courses', :action => 'edit'}
     
   #Delete
   get '/course/delete/:id', {:controller => 'courses', :action => 'delete'}
@@ -66,7 +66,7 @@ Rails.application.routes.draw do
    #HOMEROOM_____________________________________________________________________________
   
    #Create
-  get '/homerooms/new', {:controller => 'homerooms', :action => 'newform'}
+  get '/homerooms/new', {:controller => 'homerooms', :action => 'newForm'}
   post '/homerooms/new', {:controller => 'homerooms', :action => 'add'}
   
   #Read
@@ -74,9 +74,9 @@ Rails.application.routes.draw do
   get '/homerooms/:id', {:controller => 'homerooms', :action => 'show'}
   
   #Update
-  get '/homeroom/edit/:id', {:controller => 'homerooms', :action => 'editform'}
-  post '/homeroom/edit/', {:controller => 'homerooms', :action => 'edit'}
+  get '/homerooms/edit/:id', {:controller => 'homerooms', :action => 'editForm'}
+  post '/homerooms/edit/', {:controller => 'homerooms', :action => 'edit'}
     
   #Delete
-  get '/homeroom/delete/:id', {:controller => 'homerooms', :action => 'delete'}
+  get '/homerooms/delete/:id', {:controller => 'homerooms', :action => 'delete'}
 end

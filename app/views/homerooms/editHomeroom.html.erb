@@ -1,0 +1,42 @@
+<div class="row">
+  <form action="/homerooms/edit" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <h2>Edit Homeroom</h2>
+    <div>
+      <div class="medium-12 columns">
+        <label>Homeroom Number
+          <input type="number" name="homeroomNumber" placeholder="123" value="<%= @homeroom.HNumber %>">
+        </label>
+      </div>
+      <div class="medium-12 columns">
+        <label>Homeroom ID
+          <input type="number" name="homeroomID" placeholder="12345678" value="<%= @homeroom.HID %>" readonly>
+        </label>
+      </div>
+      <div class="column small-12">
+        <label>Homeroom Grade
+          <select name="homeroomGrade">
+              <option value="12" <%= :selected if @homeroom.HGrade == "12" %>>12</option>
+              <option value="11" <%= :selected if @homeroom.HGrade == "11" %>>11</option>
+              <option value="10" <%= :selected if @homeroom.HGrade == "10" %>>10</option>
+              <option value="9" <%= :selected if @homeroom.HGrade == "9" %>>9</option>
+          </select>
+        </label>
+      </div>
+      <div class="column small-12">
+        <label>Homeroom Teacher
+          <select name="homeroomTID">
+            <% Teacher.order(:TName).all.each do |teacher|%>
+              <option value="<%= teacher.TID %>" <%= :selected if @homeroom.TID == teacher.TID  %>>
+                <%= teacher.TName %>
+              </option>
+            <% end %>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div class="input-group-button">
+      <input type="submit" class="button" value="Submit">
+    </div>
+  </form>
+</div>

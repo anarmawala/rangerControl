@@ -1,0 +1,34 @@
+<div class="row">
+  <form action="/teachers/edit" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <h2>Edit Teacher</h2>
+    <div>
+      <div class="medium-12 columns">
+        <label>Teacher Name
+          <input type="text" name="teacherName" placeholder="First Middle Last" value="<%= @teacher.TName %>">
+        </label>
+      </div>
+      <div class="medium-12 columns">
+        <label>Teacher ID
+          <input type="number" name="teacherID" placeholder="12345678" value="<%= @teacher.TID %>" readonly>
+        </label>
+      </div>
+      <div class="medium-12 columns">
+        <label>Teacher Email
+          <input type="email" name="teacherEmail" placeholder="teacher@cps.edu" value="<%= @teacher.TEmail %>">
+        </label>
+      </div>
+      <div class="column small-12">
+        <label>Teacher Admin Rights
+          <select name="teacherAdmin">
+            <option value=0 <%= :selected if @teacher.TAdmin == false %>>No</option>
+            <option value=1 <%= :selected if @teacher.TAdmin == true %>>Yes</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div class="input-group-button">
+      <input type="submit" class="button" value="Submit">
+    </div>
+  </form>
+</div>
