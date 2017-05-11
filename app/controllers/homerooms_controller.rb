@@ -31,7 +31,7 @@ class HomeroomsController < ApplicationController
   end
   
   def edit
-    editHomeroom = Homeroom.find_by(:HID => params[:id])
+    editHomeroom = Homeroom.find_by(:HID => params[:homeroomID])
     editHomeroom.TID = params[:homeroomTID]
     editHomeroom.HNumber = params[:homeroomNumber]
     editHomeroom.HGrade = params[:homeroomGrade]

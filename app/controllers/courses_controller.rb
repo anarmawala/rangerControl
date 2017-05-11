@@ -30,7 +30,7 @@ class CoursesController < ApplicationController
   end
   
   def edit
-    editCourse = Course.find_by(:CID => params[:id])
+    editCourse = Course.find_by(:CID => params[:courseID])
     
     editCourse.TID = params[:courseTID]
     editCourse.CType = params[:courseType]
