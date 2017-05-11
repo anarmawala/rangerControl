@@ -30,7 +30,14 @@ class CoursesController < ApplicationController
   end
   
   def edit
+    editCourse = Course.find_by(:CID => params[:id])
     
+    editCourse.TID = params[:courseTID]
+    editCourse.CType = params[:courseType]
+    editCourse.CName = params[:courseName]
+    
+    editCourse.save
+    redirect_to '/home2'
   end
   
   def delete
