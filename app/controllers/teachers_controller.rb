@@ -2,7 +2,7 @@ class TeachersController < ApplicationController
   protect_from_forgery with: :exception
   
   def newForm
-    
+    render 'createTeacher'
   end
   
   def add
@@ -17,11 +17,11 @@ class TeachersController < ApplicationController
   end
   
   def index
-    
+    render 'index'
   end
   
   def show
-    
+    Teacher.find_by(:TID => params[:id])
   end
   
   def editform

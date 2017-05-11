@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   protect_from_forgery with: :exception
   
   def newForm
-    
+    render 'createCourse'
   end
   
   def add
@@ -17,7 +17,7 @@ class CoursesController < ApplicationController
   end
   
   def index
-    
+    render 'index'
   end
   
   def show

@@ -2,7 +2,7 @@ class HomeroomsController < ApplicationController
   protect_from_forgery with: :exception
   
   def newForm
-    
+    render 'createHomeroom'
   end
   
   def add
@@ -18,7 +18,7 @@ class HomeroomsController < ApplicationController
   end
   
   def index
-    
+    render 'index'
   end
   
   def show
