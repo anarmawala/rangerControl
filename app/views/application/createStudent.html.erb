@@ -7,7 +7,7 @@
       <div class="row">
         <div class="medium-6 columns">
           <label>Name
-            <input type="text" name="studentName" placeholder="First Middle Last">
+            <input type="text" name="studentName" placeholder="First Middle Last" required>
           </label>
         </div>
         <div class="medium-6 columns">
@@ -17,22 +17,22 @@
         </div>
         <div class="medium-12 columns">
           <label>Address
-            <input type="text" name="studentAddress" placeholder="1234 N Sample Ave">
+            <input type="text" name="studentAddress" placeholder="1234 N Sample Ave" required>
           </label>
         </div>
         <div class="medium-6 columns">
           <label>Phone
-            <input type="tel" name="studentPhone" placeholder="1234567890">
+            <input type="tel" name="studentPhone" placeholder="1234567890" required>
           </label>
         </div>
         <div class="medium-6 columns">
           <label>Email
-            <input type="email" name="studentEmail" placeholder="student@cps.edu">
+            <input type="email" name="studentEmail" placeholder="student@cps.edu" required>
           </label>
         </div>
         <div class="medium-6 columns">
           <label>ID
-            <input type="text" name="studentID" placeholder="12345678">
+            <input type="text" name="studentID" placeholder="12345678" required>
           </label>
         </div>
         <div class="medium-6 columns">
@@ -46,42 +46,55 @@
         </div>
         <div class="medium-6 columns">
           <label>UGPA
-            <input type="number" name="studentUGPA" min="0" max="4.00">
+            <input type="number" name="studentUGPA" min="0" max="4.0" step="0.01" required>
           </label>
         </div>
         <div class="medium-6 columns">
           <label>WGPA
-            <input type="number" name="studentWGPA" min="0" max="6.00">
+            <input type="number" name="studentWGPA" min="0" max="6" step="0.01" required>
           </label>
         </div>
         <div class="medium-3 columns">
           <label>Absences
-            <input type="number" name="studentAbsences" min="0.00">
+            <input type="number" name="studentAbsences" min="0" step="0.1" required>
           </label>
         </div>
         <div class="medium-3 columns">
-          <label>Absence %
-            <input type="number" name="studentAbsences" min="0.00">
+          <label>Attendance %
+            <input type="number" name="studentAttendance" min="0" step="0.1" required>
           </label>
         </div>
         <div class="medium-3 columns">
           <label>Detentions
-            <input type="number" name="studentDetentions" min="0">
+            <input type="number" name="studentDetentions" min="0" required>
           </label>
         </div>
         <div class="medium-3 columns">
           <label>Tardies
-            <input type="number" name="studentTardies" min="0">
+            <input type="number" name="studentTardies" min="0" required>
           </label>
         </div>
         <div class="medium-6 columns">
           <label>SLHs
-            <input type="number" name="studentSLHs" min="0" max="6.00">
+            <input type="number" name="studentSLHs" min="0" required>
           </label>
         </div>
         <div class="medium-6 columns">
           <label>Debt
-            <input type="number" name="studentDebt" min="0" max="6.00">
+            <input type="number" name="studentDebt" min="0" step="0.01" required>
+          </label>
+        </div>
+        <div class="medium-6 columns">
+          <label>Credits
+            <input type="number" name="studentCredit" min="0" step="0.5" required>
+          </label>
+        </div>
+        <div class="medium-6 columns">
+          <label>On Track
+            <select name="studentOnTrack">
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
           </label>
         </div>
       </div>

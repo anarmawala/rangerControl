@@ -13,29 +13,35 @@ class StudentsController < ApplicationController
     newStudent.SPhone = params[:studentPhone]
     newStudent.SEmail = params[:studentEmail]
     newStudent.SAbsences = params[:studentAbsences]
-    newStudent.SAttendance = params[:studentAbsences]
+    newStudent.SAttendance = params[:studentAttendance]
     newStudent.STardies = params[:studentTardies]
     newStudent.SDetentions = params[:studentDetentions]
     newStudent.SUGPA = params[:studentUGPA]
-    newStudent.WGPA = params[:studentWGPA]
+    newStudent.SWGPA = params[:studentWGPA]
     newStudent.SSLHs = params[:studentSLHs]
-    newStudent.SCredits = params[:studentCredits]
-    newStudent.SOT = params[:studentOnTrack]
+    newStudent.SCredits = params[:studentCredit]
+    newStudent.SOT = params[:studentOnTrack].to_i
     newStudent.SGrade = Homeroom.find_by(:HID => params[:studentHID]).HGrade
     newStudent.SDebt = params[:studentDebt]
     newStudent.HID = params[:studentHID]
-    puts newStudent.inspect
+    
     
     #Classes
-    if params[:period1Average]
-      newStudent.SClasses << {
-        "SP1CID" => params[:period1CourseID],
-        "SP1TID" => Course.find_by(:CID => params[:period1CourseID]).TID,
-        "SP1Average" => params[:period1Average],
-        "SP1Grade" => params[:period1Grade],
-      }.to_s
+     
+    classesArray = []
+    for number in 1..10 do 
+      unless params[eval(":period#{number}Average") == ""]
+        classesArray.push({
+          "SP#{number}CID" => params[eval(":period#{number}CourseID")],
+          "SP#{number}TID" => Course.find_by(:CID => params[eval(":period#{number}CourseID")]).TID,
+          "SP#{number}Average" => params[eval(":period#{number}Average")],
+          "SP#{number}Grade" => params[eval(":period#{number}Grade")],
+        })
+      end
     end
     
+    newStudent.SClasses = classesArray
+    newStudent.save
     redirect_to '/home2'
   end
   
