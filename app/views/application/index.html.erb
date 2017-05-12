@@ -7,27 +7,41 @@
 -->
 <div class="row">
   <table>
-    <thead>
-      <tr>
-        <th colspan=4>Student</th>
-        <th width="20%">Actions</th>
-      </tr>
-    </thead>
     <tbody>
-      <tr>
+       <tr>
+        <td style="width:80%">Student</td>
+        <td style="width:20%">Actions</td>
+      </tr>
       <% Student.order(:SName).all.each do |student| %>
-        <a href="student/<%= student.SID %>}">
-          <tr class="valign-middle">
-            <td>asdffdsaa</td>
-            <td colspan="2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, minus, veniam, laboriosam laudantium consequatur ipsam tempora voluptatum quis nesciunt in mollitia voluptatem assumenda distinctio quaerat aperiam minima rerum laborum inventore eius vero! Rerum, quos, alias voluptatum libero sed eos veniam error dolore maxime obcaecati minima corporis aliquam at sit animi quae harum reiciendis laborum quas vero labore cupiditate hic omnis odit necessitatibus architecto enim amet excepturi earum assumenda accusamus consequatur consectetur vel quasi nihil placeat esse doloribus perspiciatis sunt dolorum repudiandae deserunt id debitis quibusdam dolores officia dignissimos aperiam facere consequuntur ipsa. Iure eum accusamus veritatis suscipit quisquam et molestias!</td>
-          </tr>
-        </a>
+        <tr class="" style="width:100%">
+          <td class="valign-middle">
+            <div class="row">
+              <div class="columns medium-3">
+                <img class="thumbnail" style="border-radius:10000px;" src="https://dummyimage.com/100/919191/000000"/>
+              </div>
+              <div class="columns medium-9">
+                <span>
+                    <%= student.SName %>
+                  <br>
+                    <%= student.SID %>
+                  <br>
+                  
+                </span>
+              </div>
+            </div>
+          </td>
+          <td>
+            <a class="success button" style="color:white;" class="fa fa-pencil-square fa-sm" aria-hidden="true">&nbsp;&nbsp;Edit</a>
+            <button type="button warning" class="alert button" class="fa fa-trash-o fa-sm">&nbsp;&nbsp;Delete
+            </button>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>
 </div>
   
-
+<! --
 <div class="row">
   <div class="row valign-middle">
     <div class="columns small-2">
@@ -47,8 +61,8 @@
     </div>
     <div class="columns small-1">
       <button type="button warning" class="alert button" class="fa fa-trash-o fa-sm">&nbsp;&nbsp;Delete
-      </button>   
+      </button>
     </div>
   </div>
 </div>
-
+-->

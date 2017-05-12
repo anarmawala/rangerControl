@@ -48,7 +48,8 @@ class StudentsController < ApplicationController
   end
   
   def show
-    
+    @student = Student.find_by(:SID => params[:id])
+    render 'showStudent'
   end
   
   def editForm
@@ -95,6 +96,8 @@ class StudentsController < ApplicationController
   end
   
   def delete
-    
+    @student = Student.find_by(:SID => params[:id])
+    @student.destroy
+    render 'index'
   end
 end
