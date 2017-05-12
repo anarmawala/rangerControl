@@ -1,0 +1,261 @@
+<style>
+  table.barby-barcode {
+    border-spacing: 0;
+    background: white;
+  }
+  tr.barby-row.off {
+    
+  }
+  td.barby-cell {
+    width: 1px;
+    height: 70px;
+    padding:0;
+  }
+  td.barby-cell.on {
+    background: #000;
+  }
+  .card-divider {
+    background-color: rgba(115, 159, 251, 0.87); /* rgba(148, 215, 253, 0.53) for even colors*/
+    border-top-left-radius:6px;
+    border-top-right-radius:6px;
+  }
+  tbody#grades tr:nth-child(even) {
+    background-color: rgba(148, 215, 253, 0.53);
+  }
+  tbody#grades tr:nth-child(odd) {
+    background-color: rgba(148, 215, 253, 1);
+  }
+  .card {
+    border: 0;
+  }
+  .card-section {
+    background-color:#d9ecec;
+    border: 1px solid #e6e6e6;
+  }
+  .input-group-label {
+    background: lightblue;
+  }
+  .input-group-field {
+    border-radius: 0;
+    height: 2.5rem;
+    border: 1px solid #b3b3b3;
+    background: cyan;
+    box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  }
+  .has-tip>p{
+    margin-bottom: 0;
+    font-weight: normal;
+  }
+  .has-tip {
+    font-weight: normal;
+  }
+  .text-red {
+    color: red;
+  }
+  .text-green {
+    color: green;
+  }
+  .text-black {
+    color: black;
+  }
+</style>
+
+
+<div class="row text-center ">
+  <div class="columns small-12 medium-4 valign-middle">
+    <img class="thumbnail" style="width:175px;height:175px;border-radius:10000px;" src="<%= @student.SPhotoS%>"/>
+  </div>
+  <div class="columns small-12 medium-8">
+    <h3><%= @student.SName %></h3>
+    <h5><b>HR:</b> <%= Homeroom.find_by(:HID => @student.HID).HNumber %>  <b>ID:</b> <%= @student.SID %></h5>
+    <div class="row">
+      <div class="columns small-12 medium-8 medium-offset-2">
+        <%= raw Barby::HtmlOutputter.new(Barby::Code39.new(@student.SID )).to_html %>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+
+<div class="row text-center">
+  <div class="column small-12 medium-5">
+    <div class="card">
+      <div class="card-divider">
+        <h4>Grades</h4>
+      </div>
+      <div class="card-section" style="padding-top:0;padding-bottom:0px;">
+        <div class="row">
+          <table style="margin-bottom:0px;">
+            <thead>
+              <tr>
+                <th width="60%">Course Name</th>
+                <th width="20%">Average</th>
+                <th width="20%">Grade</th>
+              </tr>
+            </thead>
+            <style>
+              tr td:nth-child(2), tr td:nth-child(3){
+                text-align: center;
+              }
+            </style>
+            <tbody id="grades">
+              <% for i in 1..@student.SClasses.length %>
+              <tr>
+                <td><a class="text-black" href="mailto:<%= Teacher.find_by(:TID => eval(@student.SClasses[i-1])["SP#{i}TID"]).TEmail %>"><%= Course.find_by(:CID => eval(@student.SClasses[i-1])["SP#{i}CID"]).CType %> <%= Course.find_by(:CID => eval(@student.SClasses[i-1])["SP#{i}CID"]).CName %></a></td>
+                
+                <td><%= eval(@student.SClasses[i-1])["SP#{i}Average"] %></td>
+                <td class="<%= "text-red";@totalFs += 1 if eval(@student.SClasses[i-1])["SP#{i}Grade"] == "F" %>"><b><%= eval(@student.SClasses[i-1])["SP#{i}Grade"] %></b></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column small-12 medium-7">
+    
+  <div class="row">
+
+    <div class="columns small-12 medium-6 large-4">
+      <div class="card">
+        <div class="card-divider">
+          <h4>UGPA</h4>
+        </div>
+        <div class="card-section">
+          <span><b><%= @student.SUGPA %></b></span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="columns small-12 medium-6 large-4">
+      <div class="card">
+        <div class="card-divider">
+          <h4>WGPA</h4>
+        </div>
+        <div class="card-section">
+          <span><b><%= @student.SWGPA %></b></span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="columns small-12 medium-6 large-4">
+      <div class="card">
+        <div class="card-divider">
+          <h4>On Track</h4>
+        </div>
+        <div class="card-section">
+          <span><b class="<%= "text-green" if @student.SOT == true %> <%= "text-red" if @student.SOT == false %>"><%= "Yes" if @student.SOT == true %><%= "No" if @student.SOT == false %></b></span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="columns small-12 medium-6 large-4">
+      <div class="card">
+        <div class="card-divider">
+          <h4>SLHs</h4>
+        </div>
+        <div class="card-section">
+          <span><b><%= @student.SSLHs %> hours</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns small-12 medium-6 large-4">
+      <div class="card">
+        <div class="card-divider">
+          <h4>Credits</h4>
+        </div>
+        <div class="card-section">
+          <span><b><%= @student.SCredits %></b></span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="columns small-12 medium-6 large-4">
+      <div class="card">
+        <div class="card-divider">
+          <h4>Attendance</h4>
+        </div>
+        <div class="card-section">
+          <span><b><%= @student.SAttendance %>%</b></span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="columns small-12 medium-6 large-4">
+      <div class="card">
+        <div class="card-divider">
+          <h4>Absences</h4>
+        </div>
+        <div class="card-section">
+          <span><b><%= @student.SAbsences %> days</b></span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="columns small-12 medium-6 large-4">
+      <div class="card">
+        <div class="card-divider">
+          <h4>Detentions</h4>
+        </div>
+        <div class="card-section">
+          <span><b><%= @student.SDetentions %></b></span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="columns small-12 medium-6 large-4">
+      <div class="card">
+        <div class="card-divider">
+          <h4>Total F's</h4>
+        </div>
+        <div class="card-section">
+          <span><b><%= @totalFs %></b></span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="columns small-12 medium-6 large-4">
+      <div class="card">
+        <div class="card-divider">
+          <h4>Tardies</h4>
+        </div>
+        <div class="card-section">
+          <span><b><%= @student.STardies %></b></span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="columns small-12 medium-6 large-4">
+      <div class="card">
+        <div class="card-divider">
+          <h4>Debt</h4>
+        </div>
+        <div class="card-section">
+          <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="You need 0 debt to graduate">
+            <span><b class="<%= "text-red" if @student.SDebt.to_f > 0 %>">$<%= @student.SDebt %></b></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  
+    <div class="columns small-12 medium-6 large-4">
+      <div class="card">
+        <div class="card-divider">
+          <h4>Eligibility</h4>
+        </div>
+        <div class="card-section">
+          <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="You need zero detentions, less than 2 F's and no debt to be eligile">
+            <% @eligible = "Yes" if @student.SDetentions.to_i == 0 && @student.SDebt.to_f == 0 && @totalFs < 3 %>
+            <% @eligible = "No" if @student.SDetentions.to_i < 0 || @student.SDebt.to_f > 0 || @totalFs > 2 %>
+            <span><b class="<%= "text-green" if @eligible == "Yes" %> <%= "text-red" if @eligible == "No" %>">
+              <%= @eligible%>
+            </b></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,64 +5,49 @@
   grade, id number, hr teacher
 </div>
 -->
-<div class="row">
-  <table>
-    <tbody>
-       <tr>
-        <td style="width:80%">Student</td>
-        <td style="width:20%">Actions</td>
-      </tr>
-      <% Student.order(:SName).all.each do |student| %>
-        <tr class="" style="width:100%">
-          <td class="valign-middle">
-            <div class="row">
-              <div class="columns medium-3">
-                <img class="thumbnail" style="border-radius:10000px;" src="https://dummyimage.com/100/919191/000000"/>
-              </div>
-              <div class="columns medium-9">
-                <span>
-                    <%= student.SName %>
-                  <br>
-                    <%= student.SID %>
-                  <br>
-                  
-                </span>
-              </div>
-            </div>
-          </td>
-          <td>
-            <a class="success button" style="color:white;" class="fa fa-pencil-square fa-sm" aria-hidden="true">&nbsp;&nbsp;Edit</a>
-            <button type="button warning" class="alert button" class="fa fa-trash-o fa-sm">&nbsp;&nbsp;Delete
-            </button>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="row" id="students">
+    <div class="row">
+      <div class="columns small-3">
+        Student
+      </div>
+      <div class="columns small-6">
+        
+      </div>
+      <div class="columns small-3">
+        Action
+      </div>
+    </div>
+    <br>
+  <% Student.order(:SName).all.each do |student| %>
+    <div id="student">
+      <div class="row">
+        <div class="columns small-3">
+          <img style="border-radius:1000px;" src="<%= student.SPhotoS %>" />
+        </div>
+        <div class="columns small-6">
+          
+        </div>
+        <div class="columns small-3 valign-middle">
+          <button type="button" class="success button">Show</button><br>
+          <button type="button" class="secondary button">Edit</button><br>
+          <button type="button" class="alert button">Delete</button>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
+
+
+<div class="row" id="teachers">
   
-<! --
-<div class="row">
-  <div class="row valign-middle">
-    <div class="columns small-2">
-      <img class="thumbnail" style="border-radius:10000px;" src="https://dummyimage.com/75/919191/000000"/>
-    </div>
-    <div class="columns small-3">
-      Mohammed Shajiuddin
-    </div>
-    <div class="columns small-2">
-      42569836
-    </div>
-    <div class="columns small-3">
-      Hr:761 | Mark Wienand
-    </div>
-    <div class="columns small-1">
-      <a class="success button" style="color:white;" class="fa fa-pencil-square fa-sm" aria-hidden="true">&nbsp;&nbsp;Edit</a>
-    </div>
-    <div class="columns small-1">
-      <button type="button warning" class="alert button" class="fa fa-trash-o fa-sm">&nbsp;&nbsp;Delete
-      </button>
-    </div>
-  </div>
 </div>
--->
+
+
+<div class="row" id="courses">
+  
+</div>
+
+
+<div class="row" id="homerooms">
+  
+</div>

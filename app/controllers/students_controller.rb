@@ -24,7 +24,7 @@ class StudentsController < ApplicationController
     newStudent.SGrade = Homeroom.find_by(:HID => params[:studentHID]).HGrade
     newStudent.SDebt = params[:studentDebt]
     newStudent.HID = params[:studentHID]
-    
+    newStudent.SPhotoS = params[:studentPhoto]
     
     #Classes
      
@@ -49,6 +49,8 @@ class StudentsController < ApplicationController
   
   def show
     @student = Student.find_by(:SID => params[:id])
+    @totalFs = 0
+    @eligible = ""
     render 'showStudent'
   end
   
@@ -76,6 +78,7 @@ class StudentsController < ApplicationController
     editStudent.SGrade = Homeroom.find_by(:HID => params[:studentHID]).HGrade
     editStudent.SDebt = params[:studentDebt]
     editStudent.HID = params[:studentHID]
+    editStudent.SPhotoS = params[:studentPhoto]
     
     #Classes
      

@@ -12,8 +12,8 @@ class CreateStudents < ActiveRecord::Migration
       
       t.string  :SAbsences
       t.string  :SAttendance
-      t.string :STardies
-      t.string :SDetentions
+      t.string  :STardies
+      t.string  :SDetentions
       
       t.string  :SUGPA
       t.string  :SWGPA
@@ -24,7 +24,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string  :SClasses, array: true, default:[]
       t.integer :HID
       t.integer :SGrade
-      t.string :SDebt
+      t.string  :SDebt
 
       t.timestamps null: false
     end
