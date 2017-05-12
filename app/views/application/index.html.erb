@@ -1,3 +1,8 @@
+<style>
+  #student div.row:nth-child(even) {
+    background: #97b1ff;
+  }
+</style>
 <!--
 <div class="row">
   img
@@ -6,48 +11,35 @@
 </div>
 -->
 <div class="row" id="students">
-    <div class="row">
-      <div class="columns small-3">
-        Student
-      </div>
-      <div class="columns small-6">
-        
-      </div>
-      <div class="columns small-3">
-        Action
-      </div>
+  <div class="row">
+    <div class="columns small-3">
+      Student
     </div>
-    <br>
-  <% Student.order(:SName).all.each do |student| %>
-    <div id="student">
-      <div class="row">
-        <div class="columns small-3">
-          <img style="border-radius:1000px;" src="<%= student.SPhotoS %>" />
+    <div class="columns small-6">
+      
+    </div>
+    <div class="columns small-3">
+      Action
+    </div>
+  </div>
+  <br>
+  <div id="student">
+    <% Student.order(:SName).all.each do |student| %>
+      <div class="row" style="padding:10px">
+        <div class="columns small-3 valign-middle">
+          <img style="border-radius:100px;width:150px; border-style:outset; border-width:5px; border-color:#6399ff;" src="<%= student.SPhotoS %>" />
         </div>
         <div class="columns small-6">
-          
+          <%= student.SName %> <br>
+          <%= student.SID %> <br>
+          HR: <%= Homeroom.find_by(:HID => student.HID).HNumber %>, <%= Teacher.find_by(:TID => Homeroom.find_by(:HID => student.HID).TID).TName %>
         </div>
         <div class="columns small-3 valign-middle">
-          <button type="button" class="success button">Show</button><br>
-          <button type="button" class="secondary button">Edit</button><br>
-          <button type="button" class="alert button">Delete</button>
+          <a href="/students/<%= student.SID %>" class="success button">Show</a>
+          <a href="/students/edit/<%= student.SID %>" class="secondary button">Edit</a>
+          <a href="/students/delete/<%= student.SID %>" class="alert button">Delete</a>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
-
-
-<div class="row" id="teachers">
-  
-</div>
-
-
-<div class="row" id="courses">
-  
-</div>
-
-
-<div class="row" id="homerooms">
-  
+    <% end %>
+  </div>
 </div>

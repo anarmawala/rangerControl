@@ -5,12 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'application#login'
   
-  get '/home', {:controller => 'application', :action => 'profile'}
-  get '/profile', {:controller => 'application', :action => 'createStudent'}
-  get '/profile1', {:controller => 'application', :action => 'createCourse'}
-  get '/profile2', {:controller => 'application', :action => 'createTeacher'}
-  get '/home2', {:controller => 'application', :action => 'index'}
-  get 'home3', {:controller => 'application', :action => 'createHomeroom'}
+  get '/createNew', {:controller => 'application', :action => 'profile'}
+
   
   #STUDENT_____________________________________________________________________________
   

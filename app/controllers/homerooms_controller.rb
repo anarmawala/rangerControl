@@ -41,6 +41,8 @@ class HomeroomsController < ApplicationController
   end
   
   def delete
-    
+    @homeroom = Homeroom.find_by(:HID => params[:id])
+    @homeroom.destroy
+    render 'index'
   end
 end

@@ -13,7 +13,7 @@ class CoursesController < ApplicationController
     newCourse.CName = params[:courseName]
     
     newCourse.save
-    redirect_to '/home2'
+    redirect_to "/courses/#{newCourse.CID}"
   end
   
   def index
@@ -37,10 +37,12 @@ class CoursesController < ApplicationController
     editCourse.CName = params[:courseName]
     
     editCourse.save
-    redirect_to '/home2'
+    redirect_to "/courses/#{editCourse.CID}"
   end
   
   def delete
-    
+    @course = Course.find_by(:CID => params[:id])
+    @course.destroy
+    render 'index'
   end
 end

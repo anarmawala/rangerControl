@@ -40,7 +40,7 @@ class StudentsController < ApplicationController
     
     newStudent.SClasses = classesArray
     newStudent.save
-    redirect_to '/home2'
+    redirect_to "/students/#{newStudent.SID}"
   end
   
   def index
@@ -95,7 +95,7 @@ class StudentsController < ApplicationController
     editStudent.SClasses = editClassesArray
     editStudent.save
     
-    redirect_to '/home2'
+    redirect_to "/students/#{editStudent.SID}"
   end
   
   def delete

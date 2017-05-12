@@ -42,6 +42,8 @@ class TeachersController < ApplicationController
   end
   
   def delete
-    
+    @teacher = Teacher.find_by(:TID => params[:id])
+    @teacher.destroy
+    render 'index'
   end
 end
