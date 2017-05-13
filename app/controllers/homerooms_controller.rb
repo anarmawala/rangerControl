@@ -13,7 +13,7 @@ class HomeroomsController < ApplicationController
     newHomeroom.HGrade = params[:homeroomGrade]
     
     newHomeroom.save
-    redirect_to "/homerooms/#{newHomeroom.HID}"
+    render 'index'
     
   end
   
@@ -37,7 +37,7 @@ class HomeroomsController < ApplicationController
     editHomeroom.HGrade = params[:homeroomGrade]
     
     editHomeroom.save
-    redirect_to "/homerooms/#{editHomeroom.HID}"
+    render 'index'
   end
   
   def delete

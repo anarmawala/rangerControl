@@ -13,7 +13,7 @@ class TeachersController < ApplicationController
     newTeacher.TAdmin = params[:teacherAdmin]
     
     newTeacher.save
-    redirect_to "/teachers/#{newTeacher.TID}"
+    render 'index'
   end
   
   def index
@@ -38,7 +38,7 @@ class TeachersController < ApplicationController
     editTeacher.TAdmin = params[:teacherAdmin]
     
     editTeacher.save
-    redirect_to "/teachers/#{editTeacher.TID}"
+    render 'index'
   end
   
   def delete
