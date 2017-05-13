@@ -1,45 +1,29 @@
-<style>
-  #student div.row:nth-child(even) {
-    background: #97b1ff;
-  }
-</style>
-<!--
-<div class="row">
-  img
-  name
-  grade, id number, hr teacher
-</div>
--->
 <div class="row" id="students">
-  <div class="row">
-    <div class="columns small-3">
-      Student
+  <div class="card">
+    <div class="card-divider text-center">
+      <h2><b>Students</b></h2>
     </div>
-    <div class="columns small-6">
-      
-    </div>
-    <div class="columns small-3">
-      Action
-    </div>
-  </div>
-  <hr>
-  <div id="student">
-    <% Student.order(:SName).all.each do |student| %>
-      <div class="row" style="padding:10px">
-        <div class="columns small-2 valign-middle">
-          <img style="border-radius:100px;width:100px; border-style:outset; border-width:5px; border-color:#6399ff;" src="<%= student.SPhotoS %>" />
-        </div>
-        <div class="columns small-7 valign-middle">
-          <h3><b><%= student.SName %></b></h3>
-          <%= student.SID %> <br>
-          HR: <%= Homeroom.find_by(:HID => student.HID).HNumber %>, <%= Teacher.find_by(:TID => Homeroom.find_by(:HID => student.HID).TID).TName %>
-        </div>
-        <div class="columns small-3 valign-middle">
-          <a href="/students/<%= student.SID %>" class="success button">Show</a>
-          <a href="/students/edit/<%= student.SID %>" class="secondary button">Edit</a>
-          <a href="/students/delete/<%= student.SID %>" class="alert button">Delete</a>
-        </div>
+    <div class="card-section">
+      <div class="row">
+        <% Student.order(:SName).all.each do |student| %>
+          <div class="columns small-12 medium-6 end" style="margin-bottom:15px">
+            <div class="row valign-middle">
+              <div class="columns small-4">
+                <img style="border-radius:100px;width:80%; border-style:outset; border-width:5px; border-color:#6399ff;" src="<%= student.SPhotoS %>" />
+              </div>
+              <div class="columns small-8 ">
+                <h3><b><%= student.SName %></b></h3>
+                <%= student.SID %> <br>
+                HR: <%= Homeroom.find_by(:HID => student.HID).HNumber %>, <%= Teacher.find_by(:TID => Homeroom.find_by(:HID => student.HID).TID).TName %><br>
+                <a href="/students/<%= student.SID %>" class="success button">Show</a>
+                <a href="/students/edit/<%= student.SID %>" class="secondary button">Edit</a>
+                <a href="/students/delete/<%= student.SID %>" class="alert button">Delete</a>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
