@@ -5,24 +5,25 @@
     </div>
     <div class="card-section">
       <div class="row">
-        <% Student.order(:SName).all.each do |student| %>
-          <div class="columns small-12 medium-6 end" style="margin-bottom:15px">
-            <div class="row valign-middle">
-              <div class="columns small-4">
-                <img style="border-radius:100px;width:80%; border-style:outset; border-width:5px; border-color:#6399ff;" src="<%= student.SPhotoS %>" />
-              </div>
-              <div class="columns small-8 ">
-                <h3><b><%= student.SName %></b></h3>
-                <%= student.SID %> <br>
-                HR: <%= Homeroom.find_by(:HID => student.HID).HNumber %>, <%= Teacher.find_by(:TID => Homeroom.find_by(:HID => student.HID).TID).TName %><br>
-                <a href="/students/<%= student.SID %>" class="success button">Show</a>
-                <a href="/students/edit/<%= student.SID %>" class="secondary button">Edit</a>
-                <a href="/students/delete/<%= student.SID %>" class="alert button">Delete</a>
+        <div class="columns small-11 small-centered">
+          <% Student.order(:SName).all.each do |student| %>
+            <div class="columns small-12 medium-6 end" style="margin-bottom:15px">
+              <div class="row valign-middle">
+                <div class="columns small-4">
+                  <img style="border-radius:100px;width:80%; border-style:outset; border-width:5px; border-color:#6399ff;" src="<%= student.SPhotoS %>" />
+                </div>
+                <div class="columns small-8 ">
+                  <h3><b><%= student.SName %></b></h3>
+                  <%= student.SID %> <br>
+                  HR: <%= Homeroom.find_by(:HID => student.HID).HNumber %>, <%= Teacher.find_by(:TID => Homeroom.find_by(:HID => student.HID).TID).TName %><br>
+                  <a href="/students/<%= student.SID %>" class="success button">Show</a>
+                  <a href="/students/edit/<%= student.SID %>" class="secondary button">Edit</a>
+                  <a href="/students/delete/<%= student.SID %>" class="alert button">Delete</a>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
-        
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
