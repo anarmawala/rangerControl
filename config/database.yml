@@ -4,8 +4,8 @@ development:
   database: rangerapp
   pool: 5
   host: localhost
-  username: ranger
-  password: ranger6y6y
+  username: user
+  password: app-dev
 
 test:
   adapter: postgresql
