@@ -26,10 +26,10 @@
   <div id="student">
     <% Student.order(:SName).all.each do |student| %>
       <div class="row" style="padding:10px">
-        <div class="columns small-3 valign-middle">
+        <div class="columns small-2 valign-middle">
           <img style="border-radius:100px;width:100px; border-style:outset; border-width:5px; border-color:#6399ff;" src="<%= student.SPhotoS %>" />
         </div>
-        <div class="columns small-6">
+        <div class="columns small-7 valign-middle">
           <h3><b><%= student.SName %></b></h3>
           <%= student.SID %> <br>
           HR: <%= Homeroom.find_by(:HID => student.HID).HNumber %>, <%= Teacher.find_by(:TID => Homeroom.find_by(:HID => student.HID).TID).TName %>
