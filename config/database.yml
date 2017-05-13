@@ -1,8 +1,5 @@
 development:
   adapter: postgresql
-  encoding: unicode
-  database: rangerapp
-  pool: 5
   host: localhost
   username: user
   password: app-dev
