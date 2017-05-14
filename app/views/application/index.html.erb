@@ -41,3 +41,31 @@
     </div>
   </div>
 </div>
+<div class="row" id="teachers">
+  <div class="card">
+    <div class="card-divider text-center">
+      <h2><b>Teachers</b></h2>
+    </div>
+    <div class="card-section">
+      <div class="row">
+        <div class="columns small-11 small-centered">
+          <% Teacher.order(:TName).all.each do |teacher| %>
+            <div class="columns small-12 medium-6 end" style="margin-bottom:15px">
+              <div class="row valign-middle">
+                <div class="columns small-4">
+                  <img style="border-radius:100px;width:80%; border-style:outset; border-width:5px; border-color:#6399ff;" src="https://dummyimage.com/1000/000/fff" />
+                </div>
+                <div class="columns small-8 ">
+                  <h3><b><a style="color:black;" href="mailto:<%= teacher.TEmail %>"><%= teacher.TName %></a></b></h3>
+                  <b>ID:</b><%= teacher.TID %><br>
+                  <a href="/teachers/edit/<%= teacher.TID %>" class="secondary button">Edit</a>
+                  <a href="/teachers/delete/<%= teacher.TID %>" class="alert button">Delete</a>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

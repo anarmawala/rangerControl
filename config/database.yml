@@ -1,8 +1,9 @@
 development:
   adapter: postgresql
   host: localhost
-  username: user
-  password: app-dev
+  database: rangerapp
+  username: ranger
+  password: ranger6y6y
 
 test:
   adapter: postgresql
