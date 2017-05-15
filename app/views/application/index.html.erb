@@ -29,9 +29,11 @@
                   <h3 style="margin-bottom:1px;"><b><%= student.SName %></b></h3>
                   <%= student.SID %> <br>
                   HR: <%= Homeroom.find_by(:HID => student.HID).HNumber %>, <%= Teacher.find_by(:TID => Homeroom.find_by(:HID => student.HID).TID).TName %><br>
-                  <a href="/students/<%= student.SID %>" class="success button">Show</a>
-                  <a href="/students/edit/<%= student.SID %>" class="secondary button">Edit</a>
-                  <a href="/students/delete/<%= student.SID %>" class="alert button">Delete</a>
+                  <div style="margin-top:7px;">
+                    <a href="/students/<%= student.SID %>" class="success button">Show</a>
+                    <a href="/students/edit/<%= student.SID %>" class="secondary button">Edit</a>
+                    <a href="/students/delete/<%= student.SID %>" class="alert button">Delete</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -57,9 +59,11 @@
                 </div>
                 <div class="columns small-8 ">
                   <h3 style="margin-bottom:1px;"><b><a style="color:black;" href="mailto:<%= teacher.TEmail %>"><%= teacher.TName %></a></b></h3>
-                  <b>ID: </b><%= teacher.TID %><br>
-                  <a href="/teachers/edit/<%= teacher.TID %>" class="secondary button">Edit</a>
-                  <a href="/teachers/delete/<%= teacher.TID %>" class="alert button">Delete</a>
+                  ID: <%= teacher.TID %><br>
+                  <div style="margin-top:7px;">
+                    <a href="/teachers/edit/<%= teacher.TID %>" class="secondary button">Edit</a>
+                    <a href="/teachers/delete/<%= teacher.TID %>" class="alert button">Delete</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -86,9 +90,12 @@
                 <div class="columns small-8 ">
                   <h3 style="margin-bottom:1px;">HR: <b><%= homeroom.HNumber %></b></h3>
                   <b>Teacher: </b><a style="color:black;" href="mailto:<%= Teacher.find_by(:TID => homeroom.TID).TEmail %>"><%= Teacher.find_by(:TID => homeroom.TID).TName %></a><br>
-                  <b>ID: </b><%= homeroom.HID %><br>
-                  <a href="/homerooms/edit/<%= homeroom.HID %>" class="secondary button">Edit</a>
-                  <a href="/homerooms/delete/<%= homeroom.HID %>" class="alert button">Delete</a>
+                  ID: <%= homeroom.HID %><br>
+                  <div style="margin-top:7px;">
+                    <a href="/homerooms/edit/<%= homeroom.HID %>" class="secondary button">Edit</a>
+                    <a href="/homerooms/delete/<%= homeroom.HID %>" class="alert button">Delete</a>
+                  </div>
+                  
                 </div>
               </div>
             </div>
