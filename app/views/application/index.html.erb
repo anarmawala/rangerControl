@@ -26,7 +26,7 @@
                   <img style="border-radius:100px;width:80%; border-style:outset; border-width:5px; border-color:#6399ff;" src="<%= student.SPhotoS %>" />
                 </div>
                 <div class="columns small-8 ">
-                  <h3><b><%= student.SName %></b></h3>
+                  <h3 style="margin-bottom:1px;"><b><%= student.SName %></b></h3>
                   <%= student.SID %> <br>
                   HR: <%= Homeroom.find_by(:HID => student.HID).HNumber %>, <%= Teacher.find_by(:TID => Homeroom.find_by(:HID => student.HID).TID).TName %><br>
                   <a href="/students/<%= student.SID %>" class="success button">Show</a>
@@ -56,7 +56,7 @@
                   <img style="border-radius:100px;width:80%; border-style:outset; border-width:5px; border-color:#6399ff;" src="https://dummyimage.com/1000/000/fff" />
                 </div>
                 <div class="columns small-8 ">
-                  <h3><b><a style="color:black;" href="mailto:<%= teacher.TEmail %>"><%= teacher.TName %></a></b></h3>
+                  <h3 style="margin-bottom:1px;"><b><a style="color:black;" href="mailto:<%= teacher.TEmail %>"><%= teacher.TName %></a></b></h3>
                   <b>ID: </b><%= teacher.TID %><br>
                   <a href="/teachers/edit/<%= teacher.TID %>" class="secondary button">Edit</a>
                   <a href="/teachers/delete/<%= teacher.TID %>" class="alert button">Delete</a>
@@ -84,7 +84,7 @@
                   <img style="border-radius:100px;width:80%; border-style:outset; border-width:5px; border-color:#6399ff;" src="https://dummyimage.com/1000/000/fff" />
                 </div>
                 <div class="columns small-8 ">
-                  <h3>HR: <b><%= homeroom.HNumber %></b></h3>
+                  <h3 style="margin-bottom:1px;">HR: <b><%= homeroom.HNumber %></b></h3>
                   <b>Teacher: </b><a style="color:black;" href="mailto:<%= Teacher.find_by(:TID => homeroom.TID).TEmail %>"><%= Teacher.find_by(:TID => homeroom.TID).TName %></a><br>
                   <b>ID: </b><%= homeroom.HID %><br>
                   <a href="/homerooms/edit/<%= homeroom.HID %>" class="secondary button">Edit</a>
