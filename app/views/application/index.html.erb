@@ -69,3 +69,32 @@
     </div>
   </div>
 </div>
+<div class="row" id="homerooms">
+  <div class="card">
+    <div class="card-divider text-center">
+      <h2><b>Homerooms</b></h2>
+    </div>
+    <div class="card-section">
+      <div class="row">
+        <div class="columns small-11 small-centered">
+          <% Homeroom.order(:HNumber).all.each do |homeroom| %>
+            <div class="columns small-12 medium-6 end" style="margin-bottom:15px">
+              <div class="row valign-middle">
+                <div class="columns small-4">
+                  <img style="border-radius:100px;width:80%; border-style:outset; border-width:5px; border-color:#6399ff;" src="https://dummyimage.com/1000/000/fff" />
+                </div>
+                <div class="columns small-8 ">
+                  <h3>HR: <b><%= homeroom.HNumber %></b></h3>
+                  <b>Teacher: </b><a style="color:black;" href="mailto:<%= Teacher.find_by(:TID => homeroom.TID).TEmail %>"><%= Teacher.find_by(:TID => homeroom.TID).TName %></a><br>
+                  <b>ID: </b><%= homeroom.HID %><br>
+                  <a href="/homerooms/edit/<%= homeroom.HID %>" class="secondary button">Edit</a>
+                  <a href="/homerooms/delete/<%= homeroom.HID %>" class="alert button">Delete</a>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
