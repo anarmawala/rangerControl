@@ -41,8 +41,9 @@ class CoursesController < ApplicationController
   end
   
   def delete
-    @course = Course.find_by(:CID => params[:id])
-    @course.destroy
+    Course.destroy_all
+    #@course = Course.find_by(:CID => params[:id])
+    #@course.destroy
     render 'index'
   end
 end
