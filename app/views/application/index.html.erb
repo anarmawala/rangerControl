@@ -7,7 +7,7 @@
     background: #429eff;
     border-top-left-radius: 15px;
     border-top-right-radius: 25px;
-    color: #564e4e;;
+    color: #564e4e;
   }
 </style>
 
@@ -89,11 +89,46 @@
                 </div>
                 <div class="columns small-8 ">
                   <h3 style="margin-bottom:1px;">HR: <b><%= homeroom.HNumber %></b></h3>
-                  <b>Teacher: </b><a style="color:black;" href="mailto:<%= Teacher.find_by(:TID => homeroom.TID).TEmail %>"><%= Teacher.find_by(:TID => homeroom.TID).TName %></a><br>
+                  Teacher: <a style="color:black;" href="mailto:<%= Teacher.find_by(:TID => homeroom.TID).TEmail %>"><%= Teacher.find_by(:TID => homeroom.TID).TName %></a><br>
                   ID: <%= homeroom.HID %><br>
                   <div style="margin-top:7px;">
                     <a href="/homerooms/edit/<%= homeroom.HID %>" class="secondary button">Edit</a>
                     <a href="/homerooms/delete/<%= homeroom.HID %>" class="alert button">Delete</a>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" id="courses">
+  <div class="card">
+    <div class="card-divider text-center">
+      <h2><b>Courses</b></h2>
+    </div>
+    <div class="card-section">
+      <div class="row">
+        <div class="columns small-11 small-centered">
+          <% Course.order(:CName).all.each do |course| %>
+            <div class="columns small-12 medium-6 end" style="margin-bottom:15px">
+              <div class="row valign-middle">
+                <div class="columns small-4">
+                  <img style="border-radius:100px;width:80%; border-style:outset; border-width:5px; border-color:#6399ff;" src="https://dummyimage.com/1000/000/fff" />
+                </div>
+                <div class="columns small-8 ">
+                  <h3 style="margin-bottom:1px;"><b><%= course.CType %> <%= course.CName %></b></h3>
+                  Teacher: 
+                  <a style="color:black;" href="mailto:<%= Teacher.find_by(:TID => course.TID).TEmail %>">
+                    <%= Teacher.find_by(:TID => course.TID).TName %>
+                  </a><br>
+                  ID: <%= course.CID %><br>
+                  <div style="margin-top:7px;">
+                    <a href="/homerooms/edit/<%= course.CID %>" class="secondary button">Edit</a>
+                    <a href="/homerooms/delete/<%= course.CID %>" class="alert button">Delete</a>
                   </div>
                   
                 </div>
