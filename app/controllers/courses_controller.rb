@@ -41,10 +41,8 @@ class CoursesController < ApplicationController
   end
   
   def delete
-    puts Course.all
-    Course.destroy_all
-    #@course = Course.find_by(:CID => params[:id])
-    #@course.destroy
+    @course = Course.find_by(:CID => params[:id])
+    @course.destroy
     redirect_to '/students'
   end
 end

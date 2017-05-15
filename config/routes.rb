@@ -56,7 +56,7 @@ Rails.application.routes.draw do
   post '/courses/edit/', {:controller => 'courses', :action => 'edit'}
     
   #Delete
-  get '/course/delete/:id', {:controller => 'courses', :action => 'delete'}
+  get '/courses/delete/:id', {:controller => 'courses', :action => 'delete'}
   
    #HOMEROOM_____________________________________________________________________________
   
