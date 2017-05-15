@@ -104,7 +104,8 @@
                 <td><a class="text-black" href="mailto:<%= Teacher.find_by(:TID => eval(@student.SClasses[i-1])["SP#{i}TID"]).TEmail %>"><%= Course.find_by(:CID => eval(@student.SClasses[i-1])["SP#{i}CID"]).CType %> <%= Course.find_by(:CID => eval(@student.SClasses[i-1])["SP#{i}CID"]).CName %></a></td>
                 
                 <td><%= eval(@student.SClasses[i-1])["SP#{i}Average"] %></td>
-                <td class="<%= "text-red";@totalFs += 1 if eval(@student.SClasses[i-1])["SP#{i}Grade"] == "F" %>"><b><%= eval(@student.SClasses[i-1])["SP#{i}Grade"] %></b></td>
+                <% @totalFs += 1 if eval(@student.SClasses[i-1])["SP#{i}Grade"] == "F" %>
+                <td class="<%= "text-red" if eval(@student.SClasses[i-1])["SP#{i}Grade"] == "F" %>"><b><%= eval(@student.SClasses[i-1])["SP#{i}Grade"] %></b></td>
               </tr>
               <% end %>
             </tbody>
