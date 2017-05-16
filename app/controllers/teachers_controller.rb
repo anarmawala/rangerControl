@@ -42,9 +42,8 @@ class TeachersController < ApplicationController
   end
   
   def delete
-    Teacher.destroy_all
-    #@teacher = Teacher.find_by(:TID => params[:id])
-    #@teacher.destroy
+    @teacher = Teacher.find_by(:TID => params[:id])
+    @teacher.destroy
     redirect_to '/students'
   end
 end
