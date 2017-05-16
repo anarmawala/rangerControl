@@ -116,8 +116,8 @@
           <% Course.order(:CName).all.each do |course| %>
             
                   <div style="margin-top:7px;">
-                    <a href="/homerooms/edit/<%= course.CID %>" class="secondary button">Edit</a>
-                    <a href="/homerooms/delete/<%= course.CID %>" class="alert button">Delete</a>
+                    <a href="/courses/edit/<%= course.CID %>" class="secondary button">Edit</a>
+                    <a href="/courses/delete/<%= course.CID %>" class="alert button">Delete</a>
                   </div>
                   
                 </div>
