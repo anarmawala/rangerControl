@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515151716) do
+ActiveRecord::Schema.define(version: 20170517132935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20170515151716) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "courses", ["CID"], name: "index_courses_on_CID", unique: true, using: :btree
+
   create_table "homerooms", force: :cascade do |t|
     t.string   "HID"
     t.string   "TID"
@@ -33,6 +35,9 @@ ActiveRecord::Schema.define(version: 20170515151716) do
     t.datetime "updated_at", null: false
     t.integer  "HGrade"
   end
+
+  add_index "homerooms", ["HID"], name: "index_homerooms_on_HID", unique: true, using: :btree
+  add_index "homerooms", ["HNumber"], name: "index_homerooms_on_HNumber", unique: true, using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "SName"
@@ -58,6 +63,9 @@ ActiveRecord::Schema.define(version: 20170515151716) do
     t.text     "SPhotoS"
   end
 
+  add_index "students", ["SEmail"], name: "index_students_on_SEmail", unique: true, using: :btree
+  add_index "students", ["SID"], name: "index_students_on_SID", unique: true, using: :btree
+
   create_table "teachers", force: :cascade do |t|
     t.string   "TID"
     t.string   "TEmail"
@@ -67,5 +75,8 @@ ActiveRecord::Schema.define(version: 20170515151716) do
     t.datetime "updated_at", null: false
     t.text     "TPhoto"
   end
+
+  add_index "teachers", ["TEmail"], name: "index_teachers_on_TEmail", unique: true, using: :btree
+  add_index "teachers", ["TID"], name: "index_teachers_on_TID", unique: true, using: :btree
 
 end
