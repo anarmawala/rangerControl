@@ -12,8 +12,11 @@ class CoursesController < ApplicationController
     newCourse.CType = params[:courseType]
     newCourse.CName = params[:courseName]
     
-    newCourse.save
-    redirect_to '/students'
+    if newCourse.save
+      redirect_to "/students"
+    else
+      redirect_to "/courses/new"
+    end
   end
   
   def index

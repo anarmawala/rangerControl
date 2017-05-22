@@ -11,9 +11,13 @@ class TeachersController < ApplicationController
     newTeacher.TEmail = params[:teacherEmail]
     newTeacher.TName = params[:teacherName]
     newTeacher.TAdmin = params[:teacherAdmin]
+    newTeacher.TPhoto = params[:teacherPhoto]
     
-    newTeacher.save
-    redirect_to '/students'
+    if newTeacher.save
+      redirect_to "/students"
+    else
+      redirect_to "/teachers/new"
+    end
   end
   
   def index
@@ -36,6 +40,7 @@ class TeachersController < ApplicationController
     editTeacher.TEmail = params[:teacherEmail]
     editTeacher.TName = params[:teacherName]
     editTeacher.TAdmin = params[:teacherAdmin]
+    editTeacher.TPhoto = params[:teacherPhoto]
     
     editTeacher.save
     redirect_to '/students'

@@ -12,9 +12,11 @@ class HomeroomsController < ApplicationController
     newHomeroom.HNumber = params[:homeroomNumber]
     newHomeroom.HGrade = params[:homeroomGrade]
     
-    newHomeroom.save
-    redirect_to '/students'
-    
+    if newHomeroom.save
+      redirect_to "/students"
+    else
+      redirect_to "/homerooms/new"
+    end
   end
   
   def index

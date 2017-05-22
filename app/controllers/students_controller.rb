@@ -39,8 +39,11 @@ class StudentsController < ApplicationController
     end
     
     newStudent.SClasses = classesArray
-    newStudent.save
-    redirect_to "/students/#{newStudent.SID}"
+    if newStudent.save
+      redirect_to "/students/#{newStudent.SID}"
+    else
+      redirect_to "/students/new"
+    end
   end
   
   def index

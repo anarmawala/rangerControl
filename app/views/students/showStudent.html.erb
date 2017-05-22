@@ -1,7 +1,6 @@
 <style>
   table.barby-barcode {
     border-spacing: 0;
-    background: white;
   }
   tr.barby-row.off {
     
@@ -10,6 +9,7 @@
     width: 1px;
     height: 70px;
     padding:0;
+    background: transparent;
   }
   td.barby-cell.on {
     background: #000;
@@ -72,6 +72,11 @@
       <div class="columns small-12 medium-8 medium-offset-2">
         <%= raw Barby::HtmlOutputter.new(Barby::Code39.new(@student.SID )).to_html %>
       </div>
+      <style>
+        tr.barby-row.off {
+          background: transparent;
+        }
+      </style>
     </div>
   </div>
 </div>
