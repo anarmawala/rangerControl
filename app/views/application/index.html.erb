@@ -23,10 +23,10 @@
             <div class="columns small-12 medium-6 end" style="margin-bottom:15px">
               <div class="row valign-middle">
                 <div class="columns small-4">
-                  <img style="border-radius:100px;width:80%; border-style:outset; border-width:5px; border-color:#6399ff;" src="<%= student.SPhotoS %>" />
+                  <img style="border-radius:100px;width:110px;height:110px; border-style:outset; border-width:5px; border-color:#6399ff;" src="<%= student.SPhotoS %>" />
                 </div>
                 <div class="columns small-8 ">
-                  <h3 style="margin-bottom:1px;"><b><%= student.SName %></b></h3>
+                  <h4 style="margin-bottom:1px;"><b><%= student.SName %></b></h4>
                   <%= student.SID %> <br>
                   HR: <%= Homeroom.find_by(:HID => student.HID).HNumber %>, <%= Teacher.find_by(:TID => Homeroom.find_by(:HID => student.HID).TID).TName %><br>
                   <div style="margin-top:7px;">
@@ -55,10 +55,10 @@
             <div class="columns small-12 medium-6 end" style="margin-bottom:15px">
               <div class="row valign-middle">
                 <div class="columns small-4">
-                  <img style="border-radius:100px;width:80%; border-style:outset; border-width:5px; border-color:#6399ff;" src="<%= "https://dummyimage.com/1000/000/fff" unless teacher.TPhoto != "" %><%= teacher.TPhoto if teacher.TPhoto != "" %>" />
+                  <img style="border-radius:100px;width:110px;height:110px; border-style:outset; border-width:5px; border-color:#6399ff;" src="<%= "https://dummyimage.com/110/000/fff" unless teacher.TPhoto != "" %><%= teacher.TPhoto if teacher.TPhoto != "" %>" />
                 </div>
                 <div class="columns small-8 ">
-                  <h3 style="margin-bottom:1px;"><b><a style="color:black;" href="mailto:<%= teacher.TEmail %>"><%= teacher.TName %></a></b></h3>
+                  <h4 style="margin-bottom:1px;"><b><a style="color:black;" href="mailto:<%= teacher.TEmail %>"><%= teacher.TName %></a></b></h4>
                   ID: <%= teacher.TID %><br>
                   <div style="margin-top:7px;">
                     <a href="/teachers/edit/<%= teacher.TID %>" class="secondary button">Edit</a>
@@ -85,10 +85,10 @@
             <div class="columns small-12 medium-6 end" style="margin-bottom:15px">
               <div class="row valign-middle">
                 <div class="columns small-4">
-                  <img style="border-radius:100px;width:80%; border-style:outset; border-width:5px; border-color:#6399ff;" src="<%= "https://dummyimage.com/1000/000/fff" unless Teacher.find_by(:TID => homeroom.TID).TPhoto != "" %><%= Teacher.find_by(:TID => homeroom.TID).TPhoto if Teacher.find_by(:TID => homeroom.TID).TPhoto != "" %>" />
+                  <img style="border-radius:100px;width:110px;height:110px; border-style:outset; border-width:5px; border-color:#6399ff;" src="<%= "https://dummyimage.com/110/000/fff" unless Teacher.find_by(:TID => homeroom.TID).TPhoto != "" %><%= Teacher.find_by(:TID => homeroom.TID).TPhoto if Teacher.find_by(:TID => homeroom.TID).TPhoto != "" %>" />
                 </div>
                 <div class="columns small-8 ">
-                  <h3 style="margin-bottom:1px;">HR: <b><%= homeroom.HNumber %></b></h3>
+                  <h4 style="margin-bottom:1px;">HR: <b><%= homeroom.HNumber %></b></h4>
                   Teacher: <a style="color:black;" href="mailto:<%= Teacher.find_by(:TID => homeroom.TID).TEmail %>"><%= Teacher.find_by(:TID => homeroom.TID).TName %></a><br>
                   ID: <%= homeroom.HID %><br>
                   <div style="margin-top:7px;">
@@ -114,13 +114,13 @@
       <div class="row">
         <div class="columns small-11 small-centered">
           <% Course.order(:CName).all.each do |course| %>
-            <div class="columns small-12 medium-6 end" style="margin-bottom:15px">
+            <div class="columns small-12 end" style="margin-bottom:15px">
               <div class="row valign-middle">
                 <div class="columns small-4">
-                  <img style="border-radius:100px;width:80%; border-style:outset; border-width:5px; border-color:#6399ff;" src="<%= "https://dummyimage.com/1000/000/fff" unless Teacher.find_by(:TID => course.TID).TPhoto != "" %><%= Teacher.find_by(:TID => course.TID).TPhoto if Teacher.find_by(:TID => course.TID).TPhoto != "" %>" />
+                  <img style="border-radius:100px;width:110px;height:110px;border-style:outset;border-width:4px; border-color:#6399ff;" src="<%= "https://dummyimage.com/110/000/fff" unless Teacher.find_by(:TID => course.TID).TPhoto != "" %><%= Teacher.find_by(:TID => course.TID).TPhoto if Teacher.find_by(:TID => course.TID).TPhoto != "" %>" />
                 </div>
-                <div class="columns small-8 ">
-                  <h3 style="margin-bottom:1px;"><b><%= course.CType %> <%= course.CName %></b></h3>
+                <div class="columns">
+                  <h4 style="margin-bottom:1px;word-wrap:break-word;"><b><%= course.CName %></b></h4>
                   Teacher: <a style="color:black;" href="mailto:<%= Teacher.find_by(:TID => course.TID).TEmail %>"><%= Teacher.find_by(:TID => course.TID).TName %></a><br>
                   ID: <%= course.CID %><br>
           
