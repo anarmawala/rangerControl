@@ -38,8 +38,8 @@
   </head>
 
   <body>
-    
-    <div class="top-bar">
+    <% if false %>
+      <div class="top-bar">
       <div class="top-bar-left">
         <ul class="menu vertical medium-horizontal menu" data-dropdown-menu>
           <li class="menu-text"style="font-weight:normal; color:#4169e1; background:white;"><strong>RANGERControl</strong></li>
@@ -63,7 +63,7 @@
         </ul>
       </div>
     </div>
-    
+    <% end %>
     <br>
     <%= yield %>
   </body>
